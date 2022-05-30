@@ -33,6 +33,12 @@ public class DemoController {
         return "admin";
     }
 
+    @GetMapping("/admin/write")
+    // @PreAuthorize("hasRole('ADMIN')")
+    public String adminWritePage() {
+        return "write";
+    }
+
     @GetMapping("/user_info")
     public String daoTestPage(Principal principal) {
         User user = userService.findByUsername(principal.getName()).orElseThrow(() -> new RuntimeException("Unable to find user by username: " + principal.getName()));
